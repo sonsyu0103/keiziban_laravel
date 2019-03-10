@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <a href="sures/">掲示板を利用する</a>
+                    
                 </div>
             </div>
         </div>

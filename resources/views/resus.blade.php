@@ -11,7 +11,7 @@
     <!!-- レス一覧表示 -->
     @foreach($resus as $resu)
       {{ $loop->iteration }}:{{ $resu->name }}:{{ $resu->created_at }}<br>
-      {{ $resu->mess }}<br><br>
+      {!! nl2br(e($resu->mess)) !!}<br><br>
       @if($resu->image)
         <img src="{{ asset('storage/images/'.$resu->image) }}"><br><br>
       @endif
@@ -20,6 +20,7 @@
     <hr>
 
     <p>このスレッドに投稿するときはこちらからどうぞ</p>
+    @include('errors')
     <form method="POST" action="{{ url('resu') }}" enctype="multipart/form-data">
       {{ csrf_field() }}
       <p>名前</p>
@@ -31,7 +32,11 @@
       <input type="hidden" name="code" value="{{ $code }}">
       <input type="submit" value="投稿">
     </form>
+
     <hr>
+
+    <a href="/sures">スレッド一覧に戻る</a>
+    
 @endsection
 
 

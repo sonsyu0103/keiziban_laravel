@@ -8,20 +8,18 @@ use Illuminate\Http\Request;
 
 class SureController extends Controller
 {
-    //スレ一覧
     public function indexSure(Request $request)
     {
-        $sures=Sure::orderBy('id','asc')->get();
+        $sures=Sure::orderBy('id','asc')->paginate(50);
 
         return view('sures',[
             'sures'=>$sures
         ]);
     }
 
-    //スレ作成
-    public function createSure(Request $request)
+    public function storeSure(Request $request)
     {
-        $this->validate($request,[
+       $this->validate($request,[
             'sure_name'=>'required|max:100',
         ]);
 
